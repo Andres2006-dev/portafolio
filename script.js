@@ -29,17 +29,36 @@ themeToggle.addEventListener('click', () => {
 // ============================================
 const sidebar = document.getElementById('sidebar');
 const navToggle = document.getElementById('navToggle');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('active');
+  navToggle.classList.add('active');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('active');
+  navToggle.classList.remove('active');
+  navToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
 
 navToggle.addEventListener('click', () => {
-  const isOpen = sidebar.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', String(isOpen));
+  if (sidebar.classList.contains('open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
 });
 
+sidebarOverlay.addEventListener('click', closeSidebar);
+
 document.querySelectorAll('.tree-item').forEach(link => {
-  link.addEventListener('click', () => {
-    sidebar.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
+  link.addEventListener('click', closeSidebar);
 });
 
 // ============================================
@@ -63,6 +82,55 @@ const observer = new IntersectionObserver((entries) => {
 }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
 
 sections.forEach(section => observer.observe(section));
+
+// ============================================
+// Scroll reveal (animaciones de entrada)
+// ============================================
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ============================================
+// Barra de progreso de scroll
+// ============================================
+const scrollProgress = document.getElementById('scrollProgress');
+
+function updateScrollProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  scrollProgress.style.width = progress + '%';
+}
+
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
+
+// ============================================
+// Botón volver arriba
+// ============================================
+const backToTop = document.getElementById('backToTop');
+
+function toggleBackToTop() {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}
+
+window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ============================================
 // Año en el footer

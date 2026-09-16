@@ -13,6 +13,9 @@
 </head>
 <body>
 
+<!-- Barra de progreso de scroll -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- Barra de título estilo editor de código -->
 <header class="titlebar">
   <div class="titlebar-left">
@@ -32,6 +35,9 @@
   </div>
 </header>
 
+<!-- Overlay sidebar móvil -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <div class="layout">
 
   <!-- Barra lateral: árbol de archivos -->
@@ -41,7 +47,7 @@
       <li><a href="#inicio" class="tree-item" data-target="inicio.js"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7M9 21v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"/></svg></span>inicio</a></li>
       <li><a href="#sobre-mi" class="tree-item" data-target="sobre-mi.md"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/></svg></span>sobre-mi</a></li>
       <li><a href="#tecnologias" class="tree-item" data-target="tecnologias.json"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6-6a6 6 0 0 1 -8 -8l3.5 3.5z"/></svg></span>tecnologías</a></li>
-      <li><a href="#proyectos" class="tree-item" data-target="proyectos/"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 -6 -6a6 6 0 0 0 -5 3"/><path d="M7 14l6 -6"/><path d="M15 9l-1 -1"/><path d="M14 15l1 1"/><path d="M19 21l-3 -3"/></svg></span>proyectos</a></li>
+      <li><a href="#proyectos" class="tree-item" data-target="proyectos/"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M10 11.5 8.5 13.5l1.5 2M14 11.5l1.5 2-1.5 2"/></svg></span>proyectos</a></li>
       <li><a href="#experiencia" class="tree-item" data-target="experiencia.log"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><path d="M12 12h.01"/><path d="M3 13h18"/></svg></span>experiencia</a></li>
       <li><a href="#contacto" class="tree-item" data-target="contacto.sh"><span class="tree-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6l9 -6"/></svg></span>contacto</a></li>
     </ul>
@@ -53,11 +59,14 @@
   <main class="content">
 
     <!-- INICIO -->
-    <section id="inicio" class="section hero">
-      <div class="hero-photo" id="photoSlot">
-        <img src="assets/foto-perfil.jpg" alt="Foto de Andrés Sampayo" id="profilePhoto" onerror="this.style.display='none'; this.parentElement.classList.add('empty');">
-        <span class="hero-photo-placeholder">añade tu foto en<br><code>assets/foto-perfil.jpg</code></span>
-      </div>
+    <section id="inicio" class="section hero reveal">
+        <div class="hero-photo-wrapper" id="photoSlot">
+          <div class="hero-photo">
+            <img src="assets/foto-perfil.jpg" alt="Foto de Andrés Sampayo" id="profilePhoto"
+                onerror="this.remove(); document.getElementById('photoSlot').classList.add('empty');">
+            <span class="hero-photo-placeholder">añade tu foto en<br><code>assets/foto-perfil.jpg</code></span>
+          </div>
+        </div>
       <p class="eyebrow">// hola, mi nombre es</p>
       <h1 class="hero-name">Andrés Sampayo<span class="cursor" aria-hidden="true">_</span></h1>
       <p class="hero-role">Desarrollador de Software</p>
@@ -72,16 +81,26 @@
     </section>
 
     <!-- SOBRE MI -->
-    <section id="sobre-mi" class="section">
+    <section id="sobre-mi" class="section reveal">
       <p class="eyebrow">// sobre-mí</p>
       <h2 class="section-title">Sobre mí</h2>
       <div class="about-grid">
-        <p class="about-text">
-          Soy bachiller académico y tecnólogo en Análisis y Desarrollo de Software del SENA, con conocimientos en ciberseguridad
-          y experiencia construyendo aplicaciones web y móviles. He trabajado con Python, JavaScript, PHP, Java, Flutter y Laravel,
-          además de HTML, CSS, MySQL y GitHub para control de versiones. Me considero responsable, proactivo y adaptable, con
-          facilidad de aprendizaje y compromiso con la mejora continua y la adopción de nuevas tecnologías.
-        </p>
+        <div>
+          <p class="about-text">
+            Soy bachiller académico y tecnólogo en Análisis y Desarrollo de Software del SENA, con conocimientos en ciberseguridad
+            y experiencia construyendo aplicaciones web y móviles. He trabajado con Python, JavaScript, PHP, Java, Flutter y Laravel,
+            además de HTML, CSS, MySQL y GitHub para control de versiones. Me considero responsable, proactivo y adaptable, con
+            facilidad de aprendizaje y compromiso con la mejora continua y la adopción de nuevas tecnologías.
+          </p>
+          <div class="about-socials">
+            <a class="social-link" href="https://github.com/Andres2006-dev" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a class="social-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=andresfelipesampayogeronimo@gmail.com" target="_blank" rel="noopener" aria-label="Correo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+          </div>
+        </div>
         <ul class="about-facts">
           <li><span class="fact-k">Ubicación</span><span class="fact-v">Tubará, Atlántico, Colombia</span></li>
           <li><span class="fact-k">Formación</span><span class="fact-v">Tecnólogo ADSO — SENA</span></li>
@@ -92,29 +111,73 @@
     </section>
 
     <!-- TECNOLOGIAS -->
-    <section id="tecnologias" class="section">
+    <section id="tecnologias" class="section reveal">
       <p class="eyebrow">// tecnologías</p>
       <h2 class="section-title">Tecnologías</h2>
       <ul class="tech-grid">
-        <li class="tech-card"><span class="tech-dot" style="--c:#3776AB"></span>Python</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#F7DF1E"></span>JavaScript</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#777BB4"></span>PHP</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#4FD1C5"></span>Laravel</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#E76F00"></span>Java</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#54C5F8"></span>Flutter</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#FFB454"></span>MySQL</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#8FA0B3"></span>HTML &amp; CSS</li>
-        <li class="tech-card"><span class="tech-dot" style="--c:#8FA0B3"></span>GitHub</li>
+        <li class="tech-card" style="--c:#3776AB">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.89.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z"/></svg>
+          Python
+        </li>
+        <li class="tech-card" style="--c:#F7DF1E">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+          JavaScript
+        </li>
+        <li class="tech-card" style="--c:#777BB4">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <ellipse cx="12" cy="12" rx="11" ry="7"/>
+            <text x="12" y="14.9" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, monospace" font-size="7.6" font-weight="700" fill="currentColor" stroke="none">php</text>
+          </svg>
+          PHP
+        </li>
+        <li class="tech-card" style="--c:#FF2D20">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 3.5v12.2l8 4.6 8-4.6v-4.6l-8-4.6-4 2.3 8 4.6"/>
+          </svg>
+          Laravel
+        </li>
+        <li class="tech-card" style="--c:#E76F00">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 9h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9z"/>
+            <path d="M17 10.5h1.5a2.5 2.5 0 0 1 0 5H17"/>
+            <path d="M3.5 21h14"/>
+            <path d="M9 2.5c-1 1.4-1 2.4 0 3.8M13 2.5c-1 1.4-1 2.4 0 3.8"/>
+          </svg>
+          Java
+        </li>
+        <li class="tech-card" style="--c:#54C5F8">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357L14.314 0zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.372z"/></svg>
+          Flutter
+        </li>
+        <li class="tech-card" style="--c:#00758F">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5.5" rx="8" ry="2.6"/>
+            <path d="M4 5.5v13c0 1.44 3.58 2.6 8 2.6s8-1.16 8-2.6v-13"/>
+            <path d="M4 12c0 1.44 3.58 2.6 8 2.6s8-1.16 8-2.6"/>
+          </svg>
+          MySQL
+        </li>
+        <li class="tech-card" style="--c:#E44D26">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 3h16l-1.5 16.5L12 22l-6.5-2.5L4 3z"/>
+            <path d="M9.6 9 7.4 12l2.2 3M14.4 9l2.2 3-2.2 3"/>
+          </svg>
+          HTML &amp; CSS
+        </li>
+        <li class="tech-card" style="--c:#8FA0B3">
+          <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </li>
       </ul>
     </section>
 
     <!-- PROYECTOS -->
-    <section id="proyectos" class="section">
+    <section id="proyectos" class="section reveal">
       <p class="eyebrow">// proyectos</p>
       <h2 class="section-title">Proyectos</h2>
       <div class="projects-grid">
         <article class="project-card" style="--accent:#4FD1C5">
-          <h3>Agorá</h3>
+          <h3>Wanda</h3>
           <p>Es un CRM/ERP que centraliza todo para eliminar la duplicidad de tareas, evitar la pérdida de alumnos
             y automatizar la gestión administrativa en un solo lugar, evitando que la información quede repartida en sitios
             incomunicados (hojas de cálculo, papel y sistemas viejos).
@@ -126,24 +189,20 @@
           <p>Convertimos el seguimiento operativo en un proceso automatizado, visual y orientado a resultados, permitiendo
             que los equipos dediquen menos tiempo a administrar información y más tiempo a construir, diseñar y entregar valor.
           </p>
-          <div class="project-tags"><span>Privado</span></div>
-          <a class="project-link" href="https://aligna.serviceshl.com/" target="_blank" rel="noopener">Ver →</a>
+          <div class="project-tags"><span>Web App</span><span>SaaS</span></div>
+          <a class="project-link" href="https://aligna.serviceshl.com/" target="_blank" rel="noopener">Ver proyecto →</a>
         </article>
         <article class="project-card" style="--accent:#8B7CF6">
           <h3>SpeakUp</h3>
           <p>Es una plataforma de gestión de aprendizaje diseñada específicamente para dominar el inglés de forma práctica, inmersiva y medible.</p>
-          <div class="project-tags"><span>Privado</span></div>
-          <a class="project-link" href="https://speakuphl.tech/" target="_blank" rel="noopener">Ver →</a>
+          <div class="project-tags"><span>EdTech</span><span>Plataforma</span></div>
+          <a class="project-link" href="https://speakuphl.tech/" target="_blank" rel="noopener">Ver proyecto →</a>
         </article>
-        <!-- <article class="project-card project-card-empty">
-          <h3>+ Nuevo proyecto</h3>
-          <p>Duplica una tarjeta en <code>index.html</code> dentro de <code>#proyectos</code> para añadir otro proyecto.</p>
-        </article> -->
       </div>
     </section>
 
     <!-- EXPERIENCIA -->
-    <section id="experiencia" class="section">
+    <section id="experiencia" class="section reveal">
       <p class="eyebrow">// experiencia</p>
       <h2 class="section-title">Experiencia</h2>
       <ol class="timeline">
@@ -180,12 +239,12 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="section section-contact">
+    <section id="contacto" class="section section-contact reveal">
       <p class="eyebrow">// contacto</p>
       <h2 class="section-title">Hablemos</h2>
       <p class="contact-lead">¿Tienes un proyecto en mente o una vacante para un desarrollador junior? Escríbeme.</p>
       <div class="contact-grid">
-        <a class="contact-card" href="mailto:andresfelipesampayogeronimo@gmail.com">
+        <a class="contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=andresfelipesampayogeronimo@gmail.com" target="_blank" rel="noopener">
           <span class="contact-label">Correo</span>
           <span class="contact-value">andresfelipesampayogeronimo@gmail.com</span>
         </a>
@@ -206,10 +265,23 @@
 
     <footer class="footer">
       <p>Diseñado y construido por Andrés Sampayo · <span id="year"></span></p>
+      <div class="footer-socials">
+        <a class="social-link" href="https://github.com/Andres2006-dev" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a class="social-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=andresfelipesampayogeronimo@gmail.com" target="_blank" rel="noopener" aria-label="Correo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
     </footer>
 
   </main>
 </div>
+
+<!-- Botón volver arriba -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <script src="script.js"></script>
 </body>
