@@ -133,6 +133,16 @@ backToTop.addEventListener('click', () => {
 });
 
 // ============================================
+// Botón de CV: solo aparece si el PDF existe
+// ============================================
+const cvButton = document.getElementById('cvButton');
+if (cvButton && location.protocol.startsWith('http')) {
+  fetch(cvButton.getAttribute('href'), { method: 'HEAD' })
+    .then(res => { if (res.ok) cvButton.hidden = false; })
+    .catch(() => {});
+}
+
+// ============================================
 // Año en el footer
 // ============================================
 document.getElementById('year').textContent = new Date().getFullYear();

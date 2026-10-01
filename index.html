@@ -5,13 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Andrés Sampayo — Desarrollador de Software</title>
 <meta name="description" content="Portafolio de Andrés Felipe Sampayo Gerónimo, desarrollador de software en Python, JavaScript, PHP, Java, Flutter y Laravel.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%222%22><path d=%22M7 8l-4 4l4 4m10 -8l4 4l-4 4m-6 -10l-4 16%22/></svg>">
+<meta name="author" content="Andrés Sampayo">
+<meta name="theme-color" content="#0B0F14">
+<link rel="canonical" href="https://andres2006-dev.github.io/portafolio/">
+
+<!-- Vista previa al compartir el enlace (WhatsApp, LinkedIn, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Andrés Sampayo">
+<meta property="og:title" content="Andrés Sampayo — Desarrollador de Software">
+<meta property="og:description" content="Desarrollo aplicaciones web y móviles con Python, JavaScript, PHP, Laravel, Java y Flutter. Tecnólogo ADSO (SENA) y estudiante de Ingeniería de Sistemas.">
+<meta property="og:url" content="https://andres2006-dev.github.io/portafolio/">
+<meta property="og:image" content="https://andres2006-dev.github.io/portafolio/assets/foto-perfil.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Andrés Sampayo — Desarrollador de Software">
+<meta name="twitter:description" content="Desarrollo aplicaciones web y móviles con Python, JavaScript, PHP, Laravel, Java y Flutter.">
+<meta name="twitter:image" content="https://andres2006-dev.github.io/portafolio/assets/foto-perfil.jpg">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Andrés Felipe Sampayo Gerónimo",
+  "jobTitle": "Desarrollador de Software",
+  "url": "https://andres2006-dev.github.io/portafolio/",
+  "image": "https://andres2006-dev.github.io/portafolio/assets/foto-perfil.jpg",
+  "sameAs": ["https://github.com/Andres2006-dev"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Tubará", "addressRegion": "Atlántico", "addressCountry": "CO" },
+  "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "SENA" }, { "@type": "CollegeOrUniversity", "name": "Unisalamanca" }]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- Barra de progreso de scroll -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -56,13 +89,13 @@
     </div>
   </nav>
 
-  <main class="content">
+  <main class="content" id="contenido" tabindex="-1">
 
     <!-- INICIO -->
     <section id="inicio" class="section hero reveal">
         <div class="hero-photo-wrapper" id="photoSlot">
           <div class="hero-photo">
-            <img src="assets/foto-perfil.jpg" alt="Foto de Andrés Sampayo" id="profilePhoto"
+            <img src="assets/foto-perfil.jpg" alt="Foto de Andrés Sampayo" id="profilePhoto" width="800" height="1067" fetchpriority="high"
                 onerror="this.remove(); document.getElementById('photoSlot').classList.add('empty');">
             <span class="hero-photo-placeholder">añade tu foto en<br><code>assets/foto-perfil.jpg</code></span>
           </div>
@@ -70,10 +103,15 @@
       <p class="eyebrow">// hola, mi nombre es</p>
       <h1 class="hero-name">Andrés Sampayo<span class="cursor" aria-hidden="true">_</span></h1>
       <p class="hero-role">Desarrollador de Software</p>
-      <p class="hero-desc">Tecnólogo en Análisis y Desarrollo de Software (SENA) y estudiante de Ingeniería de Sistemas de la Información en Unisalamanca, desde Tubará, Atlántico. Construyo aplicaciones web y móviles escalables con Python, JavaScript, PHP, Java, Flutter y Laravel.</p>
+      <p class="hero-desc">Desarrollo aplicaciones web y móviles con Laravel, Python y Flutter. Tecnólogo en Análisis y Desarrollo de Software y estudiante de Ingeniería de Sistemas, desde Tubará, Atlántico.</p>
       <div class="hero-buttons">
-        <a class="btn btn-primary" href="https://github.com/Andres2006-dev" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <!-- Se muestra solo si existe assets/cv-andres-sampayo.pdf -->
+        <a class="btn btn-primary" id="cvButton" href="assets/cv-andres-sampayo.pdf" download hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          Descargar CV
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Andres2006-dev" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
         <a class="btn btn-ghost" href="#contacto">Contacto</a>
@@ -119,7 +157,7 @@
           <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.89.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z"/></svg>
           Python
         </li>
-        <li class="tech-card" style="--c:#F7DF1E">
+        <li class="tech-card tech-js" style="--c:#F7DF1E">
           <svg class="tech-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.405-.6-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
           JavaScript
         </li>
@@ -234,7 +272,6 @@
         <li>Mención honorífica por buen desempeño académico — SENA (2025)</li>
         <li>Mejor desempeño en el área de sistemas — Colegio (2023)</li>
         <li>Mejor prueba ICFES del colegio (2023)</li>
-        <li>Participación en el equipo de voleibol E.F.A. (2022)</li>
       </ul>
     </section>
 
